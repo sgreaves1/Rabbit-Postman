@@ -7,9 +7,9 @@ let mainWindow;
 
 app.on('ready', _ => {
     mainWindow = new browserWindow({
-        width:400,
-        height:400
     });
+
+    mainWindow.maximize();
 
     mainWindow.loadURL(`file://${__dirname}/index.html`);
 
