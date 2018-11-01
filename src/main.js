@@ -9,6 +9,8 @@ app.on('ready', _ => {
     mainWindow = new browserWindow({
     });
 
+    mainWindow.webContents.openDevTools();
+
     mainWindow.maximize();
 
     mainWindow.loadURL(`file://${__dirname}/index.html`);

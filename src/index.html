@@ -6,15 +6,30 @@
     <link rel="stylesheet" href="index.css" />
 </head>
 <body>
-<script>require('./renderer')</script>
+
 <div class="toolBar">
     <button type="button">Click Me!</button>
 </div>
 <div class="mainBody">
-    <select>
-        <option value="post">Post</option>
-        <option value="get">Get</option>
-    </select>
+    <form name="myForm" onsubmit="window.submit()">
+        <select>
+            <option value="post">Post</option>
+            <option value="get">Get</option>
+        </select>
+
+        <input type="text" name="rabbituri" placeholder="rabbit url"/>
+        <input type="text" name="routingKey" placeholder="routing key"/>
+        <input type="submit" value="submit"/>
+        <br/>
+        Exchange:
+        <select>
+        </select>
+        <br/>
+        <textarea placeholder="Payload"></textarea>
+
+    </form>
 </div>
+<script src="index.js"></script>
+
 </body>
 </html>

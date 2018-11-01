@@ -11,5 +11,9 @@
   "license": "ISC",
   "devDependencies": {
     "electron-prebuilt": "^1.4.13"
+  },
+  "dependencies": {
+    "amqp-connection-manager": "^2.2.0",
+    "amqplib": "^0.5.2"
   }
 }
