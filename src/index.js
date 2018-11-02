@@ -1,7 +1,7 @@
 const rabbitHelper = require('./rabbitmq');
 
  function submit() {
-    var rabbitUrl, payload, exchange, routingeKey;
+    var rabbitUrl, payload, queue, routingKey;
     //
     // rabbitUrl = document.getElementById("rabbituri").value;
      payload = document.getElementById("payload").value;
@@ -9,11 +9,10 @@ const rabbitHelper = require('./rabbitmq');
     // exchange = document.getElementById("exchange").value;
     //
     rabbitUrl = 'amqp://guest:fishcake@localhost:5672/quoting'
-    exchange = 'quoting:DeleteAccountHandler';
+    queue = 'quoting:DeleteAuxiliaryDataByReconIdHandler';
     routingKey = 'quoting:DeleteAccountHandler';
-
-    console.log('here');
-    rabbitHelper.insertMessage(payload, rabbitUrl, exchange, routingKey);
+    
+    rabbitHelper.insertMessage(payload, rabbitUrl, queue, routingKey);
 
 }
 

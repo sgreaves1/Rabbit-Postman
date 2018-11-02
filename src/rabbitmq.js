@@ -4,7 +4,7 @@ const amqp = require('amqp-ts');
 function insertMessage(message, uri, exchangeName, routingKey) {
 try {
     var connection = new amqp.Connection(uri);
-    var queue = connection.declareQueue('quoting:DeleteAuxiliaryDataByReconIdHandler', {durable: true, deadLetterExchange: 'quoting:dead.letter.exchange'});
+    var queue = connection.declareQueue(exchangeName, {durable: true, deadLetterExchange: 'quoting:dead.letter.exchange'});
 
     var message = new amqp.Message(message)
     queue.send(message);
