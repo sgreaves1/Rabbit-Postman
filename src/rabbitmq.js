@@ -1,23 +1,24 @@
 'use strict'
-const amqp = require('amqp-connection-manager');
+const amqp = require('amqp-ts');
 
-async function insertMessage(message, uri, exchange, routingKey) {
-    let connection = await amqp.connect(url);
+function insertMessage(message, uri, exchangeName, routingKey) {
+try {
+    var connection = new amqp.Connection(uri);
+    var queue = connection.declareQueue('quoting:DeleteAuxiliaryDataByReconIdHandler', {durable: true, deadLetterExchange: 'quoting:dead.letter.exchange'});
 
-    try {
-        console.log(`Connected to AMQP ${uri}`);
-        let channel = await connection.createChannel();
+    var message = new amqp.Message(message)
+    queue.send(message);
 
-        channel.on('close', () => {
-            console.log('AMQP connection closed');
-        });
-
-        await channel.publish(exchange, routingKey, new Buffer(message));
-    } catch (error) {
-        console.error(`Insert message to rabbit failed, ${error}`);
-    } finally {
+    // after half a second close the connection
+    setTimeout(function() {
         connection.close();
-    }
+    }, 1500);
+
+} catch (error) {
+    console.log(error);
+    var i = 0;
+}
+
 }
 
 module.exports = {insertMessage};

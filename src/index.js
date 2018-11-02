@@ -8,7 +8,7 @@ const rabbitHelper = require('./rabbitmq');
     // routingeKey = document.getElementById("routingKey").value;
     // exchange = document.getElementById("exchange").value;
     //
-    rabbitUrl = 'amqp://guest:fishcake@local:5672/quoting'
+    rabbitUrl = 'amqp://guest:fishcake@localhost:5672/quoting'
     exchange = 'quoting:DeleteAccountHandler';
     routingKey = 'quoting:DeleteAccountHandler';
 
