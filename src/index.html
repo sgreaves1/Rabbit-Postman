@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rabbit Postman</title>
+    <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+
+<div class="toolBar">
+    <button type="button">Click Me!</button>
+</div>
+<div class="mainBody">
+    <form name="myForm" onsubmit="window.submit()">
+        <select>
+            <option value="post">Post</option>
+            <option value="get">Get</option>
+        </select>
+
+        <input type="text" name="rabbituri" placeholder="rabbit url"/>
+        <input type="text" name="routingKey" placeholder="routing key"/>
+        <input type="submit" value="submit"/>
+        <br/>
+        Exchange:
+        <select>
+        </select>
+        <br/>
+        <textarea id="payload" placeholder="Payload"></textarea>
+
+    </form>
+</div>
+<script src="index.js"></script>
+
+</body>
+</html>
