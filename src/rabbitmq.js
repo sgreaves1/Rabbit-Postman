@@ -1,12 +1,12 @@
 'use strict'
 const amqp = require('amqp-ts');
 
-function insertMessage(message, uri, exchangeName, routingKey) {
+function insertMessage(payload, uri, queueName, deadLetterExchange) {
 try {
     var connection = new amqp.Connection(uri);
-    var queue = connection.declareQueue(exchangeName, {durable: true, deadLetterExchange: 'quoting:dead.letter.exchange'});
+    var queue = connection.declareQueue(queueName, {durable: true, deadLetterExchange: deadLetterExchange});
 
-    var message = new amqp.Message(message)
+    var message = new amqp.Message(payload);
     queue.send(message);
 
     // after half a second close the connection
@@ -16,7 +16,6 @@ try {
 
 } catch (error) {
     console.log(error);
-    var i = 0;
 }
 
 }
