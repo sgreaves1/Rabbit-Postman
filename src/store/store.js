@@ -6,4 +6,8 @@ module.exports = class store {
     stores(userData) {
         storage.set('userData', userData);
     }
+
+    loadUser() {
+        return storage.get('userData', null);
+    }
 }

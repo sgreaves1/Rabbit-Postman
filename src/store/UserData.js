@@ -9,7 +9,7 @@ module.exports = class UserData {
     }
 
     set requests(request) {
-        this._requests.add(request);
+        this._requests.push(request);
     }
 
     get requests() {

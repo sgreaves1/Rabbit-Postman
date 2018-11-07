@@ -6,8 +6,11 @@ const messageRequest = require('./store/messageRequest');
 var user = new userData();
 var db = new store();
 
-function load() {
+load();
 
+function load() {
+    let user = db.loadUser();
+    let i = 0;
 }
 
  function submit() {
