@@ -1,6 +1,26 @@
 .toolBar {
     background-color: black;
+    float: top;
 }
+
+.selectPanel {
+    background-color: #555;
+    left: 0;
+    width: 200px;
+    float: left;
+}
+
+.selectPanel a {
+    display: block;
+    text-align: center;
+    padding: 16px;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 36px;
+    margin: 1px;
+}
+
+
 
 .mainBody {
 
