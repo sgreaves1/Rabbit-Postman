@@ -1,4 +1,14 @@
 const rabbitHelper = require('./rabbitmq');
+const userData = require('./store/UserData');
+const store = require('./store/store');
+const messageRequest = require('./store/messageRequest');
+
+var user = new userData();
+var db = new store();
+
+function load() {
+
+}
 
  function submit() {
     var rabbitUrl, payload, queue, deadLetterExchange;
@@ -13,4 +23,17 @@ const rabbitHelper = require('./rabbitmq');
     rabbitHelper.insertMessage(payload, rabbitUrl, queue, deadLetterExchange);
 }
 
+function save() {
+
+    let request = new messageRequest();
+    request.url = document.getElementById("rabbituri").value;
+
+    user.requests = request;
+
+    db.stores(user);
+
+    console.log('Saved');
+}
+
 window.submit = submit;
+window.save = save;
