@@ -1,16 +1,21 @@
 const rabbitHelper = require('./rabbitmq');
 const userData = require('./store/UserData');
-const store = require('./store/store');
+const db = require('./store/store');
 const messageRequest = require('./store/messageRequest');
+const {BrowserWindow} = require('electron').remote;
 
-var user = new userData();
-var db = new store();
+let user = new userData();
 
 load();
 
 function load() {
-    let user = db.loadUser();
-    let i = 0;
+    let us = db.loadUser();
+
+    us._requests.forEach((item) => {
+        user.addRequest(item);
+    });
+
+    console.log(user);
 }
 
  function submit() {
@@ -28,14 +33,29 @@ function load() {
 
 function save() {
 
-    let request = new messageRequest();
-    request.url = document.getElementById("rabbituri").value;
+    try {
+        // let win = new BrowserWindow({width: 800, height: 600});
+        // win.on('closed', () => {
+        //     win = null;
+        // });
+        // win.loadURL(`file://${__dirname}/app/index.html`);
 
-    user.requests = request;
+        let request = new messageRequest();
+        request.url = document.getElementById("rabbituri").value;
 
-    db.stores(user);
+        user.addRequest(request);
 
-    console.log('Saved');
+        db.storeUser(user);
+
+        console.log('Saved');
+    } catch (error)
+    {
+        console.log(error);
+        let i =0;
+    }
+
+
+
 }
 
 window.submit = submit;

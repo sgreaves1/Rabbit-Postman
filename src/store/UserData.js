@@ -8,12 +8,8 @@ module.exports = class UserData {
         this._requests = [];
     }
 
-    set requests(request) {
+    addRequest(request) {
         this._requests.push(request);
     }
-
-    get requests() {
-        return this._requests;
-    }
-
 }
+
