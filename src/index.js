@@ -11,9 +11,20 @@ load();
 function load() {
     let us = db.loadUser();
 
+    let selectPanel = document.getElementById('selectPanel');
+
     us._requests.forEach((item) => {
         user.addRequest(item);
+
+        var a = document.createElement('a');
+        var linkText = document.createTextNode(item._url);
+        a.appendChild(linkText);
+        a.title = item.url;
+        a.href = '#';
+        selectPanel.appendChild(a);
     });
+
+
 
     console.log(user);
 }
