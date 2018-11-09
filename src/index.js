@@ -24,8 +24,6 @@ function load() {
         selectPanel.appendChild(a);
     });
 
-
-
     console.log(user);
 }
 
@@ -45,20 +43,20 @@ function load() {
 function save() {
 
     try {
-        // let win = new BrowserWindow({width: 800, height: 600});
-        // win.on('closed', () => {
-        //     win = null;
-        // });
-        // win.loadURL(`file://${__dirname}/app/index.html`);
+        let win = new BrowserWindow({width: 800, height: 600});
+        win.on('closed', () => {
+            win = null;
+        });
+        win.loadURL(`file://${__dirname}/saveRequest/saveRequest.html`);
 
-        let request = new messageRequest();
-        request.url = document.getElementById("rabbituri").value;
-
-        user.addRequest(request);
-
-        db.storeUser(user);
-
-        console.log('Saved');
+        // let request = new messageRequest();
+        // request.url = document.getElementById("rabbituri").value;
+        //
+        // user.addRequest(request);
+        //
+        // db.storeUser(user);
+        //
+        // console.log('Saved');
     } catch (error)
     {
         console.log(error);
