@@ -2,7 +2,8 @@ const rabbitHelper = require('./rabbitmq');
 const userData = require('./store/UserData');
 const db = require('./store/store');
 const messageRequest = require('./store/messageRequest');
-const {BrowserWindow} = require('electron').remote;
+const {remote} = require('electron');
+const {ipcRenderer} = require('electron');
 
 let user = new userData();
 
@@ -43,12 +44,7 @@ function load() {
 function save() {
 
     try {
-        let win = new BrowserWindow({width: 800, height: 600});
-        win.on('closed', () => {
-            win = null;
-        });
-        win.loadURL(`file://${__dirname}/saveRequest/saveRequest.html`);
-
+        ipcRenderer.send('show-save');
         // let request = new messageRequest();
         // request.url = document.getElementById("rabbituri").value;
         //

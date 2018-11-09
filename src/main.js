@@ -1,13 +1,14 @@
 const electron = require('electron');
-
+const {ipcMain} = require('electron');
 const app = electron.app;
 const browserWindow = electron.BrowserWindow;
 
 let mainWindow;
+let saveRequestWindow;
 
 app.on('ready', _ => {
-    mainWindow = new browserWindow({
-    });
+    mainWindow = new browserWindow(
+    );
 
     mainWindow.webContents.openDevTools();
 
@@ -18,5 +19,17 @@ app.on('ready', _ => {
     mainWindow.on('closed', _ => {
         mainWindow = null;
     });
+
+    saveRequestWindow = new browserWindow({show: false, width: 800, height: 600});
+    saveRequestWindow.loadURL(`file://${__dirname}/saveRequest/saveRequest.html`);
+
+    ipcMain.on('show-save', function() {
+        saveRequestWindow.show();
+    })
+
+    ipcMain.on('close-saveRequest', function() {
+        saveRequestWindow.hide();
+    });
+
 })
 

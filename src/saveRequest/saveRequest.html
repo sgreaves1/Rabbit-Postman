@@ -1,43 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Save Request</title>
-    <link rel="stylesheet" href="saveRequest.css" />
-</head>
-<body>
-<div class="titleBar">
-    <p class="title">SAVE REQUEST</p>
-</div>
+    <script src="saveRequest.js"></script>
+    <head>
+        <meta charset="UTF-8">
+        <title>Save Request</title>
+        <link rel="stylesheet" href="saveRequest.css" />
+    </head>
 
-<div>
-<p>
-    Requests in Rabbit Postman are saved in collections (a group of requests).
-    Learn more about creating collections
-</p>
+    <body>
+        <div class="titleBar">
+            <p class="title">SAVE REQUEST</p>
+        </div>
 
-    <div>
-        Request Name
-        <input type="text" id="requestName"/>
-    </div>
+        <div>
+            <p>
+                Requests in Rabbit Postman are saved in collections (a group of requests).
+                Learn more about creating collections
+            </p>
 
-    <div>
-        Request description (Optional)
-        <textarea placeholder="Adding a description makes your docs better">
-        </textarea>
-    </div>
+            <div>
+                Request Name
+                <input type="text" id="requestName"/>
+            </div>
 
-    <div>
-        Descriptions Support Markdown
-        Select a collection or folder to save to:
-        dlfkjghosudfi
-    </div>
+            <div>
+                Request description (Optional)
+                <textarea placeholder="Adding a description makes your docs better">
+                </textarea>
+            </div>
 
-    <div>
-        <button>Cancel</button>
-        <button>Save</button>
-    </div>
-</div>
+            <div>
+                Descriptions Support Markdown
+                Select a collection or folder to save to:
+                dlfkjghosudfi
+            </div>
 
-</body>
+            <div>
+                <button onclick="cancel()">Cancel</button>
+                <button onclick="save()">Save</button>
+            </div>
+        </div>
+    </body>
 </html>
