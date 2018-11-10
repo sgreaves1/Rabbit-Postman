@@ -4,9 +4,6 @@ const db = require('./store/store');
 const messageRequest = require('./store/messageRequest');
 const {remote} = require('electron');
 const {ipcRenderer} = require('electron');
-const EventEmitter = require('events');
-
-const myEmitter = new EventEmitter();
 
 let user = new userData();
 
@@ -21,9 +18,9 @@ function load() {
         user.addRequest(item);
 
         var a = document.createElement('a');
-        var linkText = document.createTextNode(item._name);
+        var linkText = document.createTextNode(item.name);
         a.appendChild(linkText);
-        a.title = item._name;
+        a.title = item.name;
         a.href = '#';
         selectPanel.appendChild(a);
     });
@@ -36,10 +33,8 @@ function load() {
 
     rabbitUrl = document.getElementById("rabbituri").value;
     payload = document.getElementById("payload").value;
-    // deadLetterExchange = document.getElementById("deadLetterExchange").value;
-     queue = document.getElementById('queue').value;
-
-    deadLetterExchange = 'quoting:dead.letter.exchange';
+    deadLetterExchange = document.getElementById("deadLetterExchange").value;
+    queue = document.getElementById('queue').value;
     
     rabbitHelper.insertMessage(payload, rabbitUrl, queue, deadLetterExchange);
 }
@@ -51,6 +46,9 @@ function save() {
             let request = new messageRequest();
             request.name = arg;
             request.url = document.getElementById("rabbituri").value;
+            request.deadLetterExchange = document.getElementById("deadLetterExchange").value;
+            request.queue = document.getElementById('queue').value;
+            request.payload = document.getElementById("payload").value;
 
             user.addRequest(request);
 

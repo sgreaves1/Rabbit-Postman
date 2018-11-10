@@ -1,20 +1,10 @@
 module.exports = class messageRequest {
-    constructor() {
-    }
+    constructor(name, url, deadLetterExchange, queue, payload) {
+        this.name = name;
+        this.url = url;
+        this.deadLetterExchange = deadLetterExchange;
+        this.queue = queue;
+        this.payload = payload;
 
-    set url(url) {
-        this._url = url;
-    }
-
-    get url() {
-        return this._url;
-    }
-
-    set name(name) {
-        this._name = name;
-    }
-
-    get name() {
-        return this._name;
     }
 }
