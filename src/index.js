@@ -4,6 +4,9 @@ const db = require('./store/store');
 const messageRequest = require('./store/messageRequest');
 const {remote} = require('electron');
 const {ipcRenderer} = require('electron');
+const EventEmitter = require('events');
+
+const myEmitter = new EventEmitter();
 
 let user = new userData();
 
@@ -18,9 +21,9 @@ function load() {
         user.addRequest(item);
 
         var a = document.createElement('a');
-        var linkText = document.createTextNode(item._url);
+        var linkText = document.createTextNode(item._name);
         a.appendChild(linkText);
-        a.title = item.url;
+        a.title = item._name;
         a.href = '#';
         selectPanel.appendChild(a);
     });
@@ -44,19 +47,25 @@ function load() {
 function save() {
 
     try {
-        ipcRenderer.send('show-save');
-        // let request = new messageRequest();
-        // request.url = document.getElementById("rabbituri").value;
-        //
-        // user.addRequest(request);
-        //
-        // db.storeUser(user);
-        //
-        // console.log('Saved');
+        ipcRenderer.on('save-reply', (event, arg) => {
+            let request = new messageRequest();
+            request.name = arg;
+            request.url = document.getElementById("rabbituri").value;
+
+            user.addRequest(request);
+
+            db.storeUser(user);
+
+            console.log('Saved');
+        });
+
+        ipcRenderer.send('show-saveRequest');
+
+
+
     } catch (error)
     {
         console.log(error);
-        let i =0;
     }
 
 

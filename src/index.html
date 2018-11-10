@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-    <script src="index.js"></script>
     <head>
         <meta charset="UTF-8">
         <title>Rabbit Postman</title>
@@ -14,6 +13,7 @@
             </div>
 
             <div class="selectPanel" id="selectPanel">
+
             </div>
 
             <div class="mainBody">
@@ -24,7 +24,7 @@
 
                 <input type="text" id="rabbituri" placeholder="Rabbit Url"/>
                 <input type="text" id="deadLetterExchange" placeholder="Dead Letter Exchange"/>
-                <input type="submit" value="submit"/>
+                <button onclick="submit()">Submit</button>
                 <button onclick="window.save()">Save</button>
                 <br/>
                 <input type="text" id="queue" placeholder="Queue"/>
@@ -33,4 +33,5 @@
             </div>
         </div>
     </body>
+    <script src="index.js"></script>
 </html>

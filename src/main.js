@@ -22,12 +22,18 @@ app.on('ready', _ => {
 
     saveRequestWindow = new browserWindow({show: false, width: 800, height: 600});
     saveRequestWindow.loadURL(`file://${__dirname}/saveRequest/saveRequest.html`);
+    saveRequestWindow.webContents.openDevTools();
 
-    ipcMain.on('show-save', function() {
+    ipcMain.on('show-saveRequest', function() {
         saveRequestWindow.show();
-    })
+    });
 
     ipcMain.on('close-saveRequest', function() {
+        saveRequestWindow.hide();
+    });
+
+    ipcMain.on('save-saveRequest', function(event, arg){
+        mainWindow.webContents.send('save-reply', arg);
         saveRequestWindow.hide();
     });
 

@@ -7,7 +7,11 @@ function storeUser(userData) {
 }
 
 function loadUser() {
-    return storage.get('userData', null);
+    return storage.get('userData', new userData);
 }
 
-module.exports = {storeUser, loadUser};
+function deleteUser() {
+    return storage.delete('userData');
+}
+
+module.exports = {storeUser, loadUser, deleteUser};

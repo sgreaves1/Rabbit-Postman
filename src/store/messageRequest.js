@@ -9,4 +9,12 @@ module.exports = class messageRequest {
     get url() {
         return this._url;
     }
+
+    set name(name) {
+        this._name = name;
+    }
+
+    get name() {
+        return this._name;
+    }
 }

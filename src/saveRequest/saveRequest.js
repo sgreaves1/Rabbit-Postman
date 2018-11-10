@@ -1,7 +1,7 @@
 const {ipcRenderer} = require('electron');
 
 function save() {
-
+    ipcRenderer.send('save-saveRequest', document.getElementById('requestName').value);
 }
 
 function cancel() {
