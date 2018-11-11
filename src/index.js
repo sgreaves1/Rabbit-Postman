@@ -5,27 +5,28 @@ const messageRequest = require('./store/messageRequest');
 const {remote} = require('electron');
 const {ipcRenderer} = require('electron');
 
-let user = new userData();
-
 load();
 
+function updateView(item)
+{
+    document.getElementById("rabbituri").value = item.url;
+    document.getElementById("payload").value = item.payload;
+    document.getElementById("deadLetterExchange").value = item.deadLetterExchange;
+    document.getElementById('queue').value = item.queue;
+}
+
 function load() {
-    let us = db.loadUser();
+    let user = db.loadUser();
 
     let selectPanel = document.getElementById('selectPanel');
 
-    us._requests.forEach((item) => {
-        user.addRequest(item);
-
-        var a = document.createElement('a');
+    user.requests.forEach((item) => {
+        let button = document.createElement('button');
         var linkText = document.createTextNode(item.name);
-        a.appendChild(linkText);
-        a.title = item.name;
-        a.href = '#';
-        selectPanel.appendChild(a);
+        button.appendChild(linkText);
+        button.onclick = function() {updateView(item);};
+        selectPanel.appendChild(button);
     });
-
-    console.log(user);
 }
 
  function submit() {
@@ -50,7 +51,8 @@ function save() {
             request.queue = document.getElementById('queue').value;
             request.payload = document.getElementById("payload").value;
 
-            user.addRequest(request);
+            let user = db.loadUser();
+            user.requests.push(request);
 
             db.storeUser(user);
 
