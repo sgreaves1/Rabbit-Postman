@@ -55,9 +55,10 @@ function load() {
 function save() {
 
     try {
-        ipcRenderer.on('save-reply', (event, arg) => {
+        ipcRenderer.on('save-reply', (event, arg1, arg2) => {
             let request = new messageRequest();
-            request.name = arg;
+            request.name = arg1;
+            request.description;
             request.url = document.getElementById("rabbituri").value;
             request.deadLetterExchange = document.getElementById("deadLetterExchange").value;
             request.queue = document.getElementById('queue').value;

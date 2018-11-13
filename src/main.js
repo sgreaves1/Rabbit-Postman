@@ -32,8 +32,8 @@ app.on('ready', _ => {
         saveRequestWindow.hide();
     });
 
-    ipcMain.on('save-saveRequest', function(event, arg){
-        mainWindow.webContents.send('save-reply', arg);
+    ipcMain.on('save-saveRequest', function(event, arg1, arg2){
+        mainWindow.webContents.send('save-reply', arg1, arg2);
         saveRequestWindow.hide();
     });
 
