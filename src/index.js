@@ -4,11 +4,18 @@ const db = require('./store/store');
 const messageRequest = require('./store/messageRequest');
 const {remote} = require('electron');
 const {ipcRenderer} = require('electron');
+const {Menu, MenuItem} = remote;
+
+let selectedItem = null;
+
+const menu = new Menu();
+menu.append(new MenuItem({label: 'Delete', click() {
+    db.deleteRequest(selectedItem.name);
+}}));
 
 load();
 
-function updateView(item)
-{
+function updateView(item) {
     document.getElementById("rabbituri").value = item.url;
     document.getElementById("payload").value = item.payload;
     document.getElementById("deadLetterExchange").value = item.deadLetterExchange;
@@ -24,6 +31,11 @@ function load() {
         let button = document.createElement('button');
         var linkText = document.createTextNode(item.name);
         button.appendChild(linkText);
+        button.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            selectedItem = item;
+            menu.popup({window: remote.getCurrentWindow()});
+        }, false);
         button.onclick = function() {updateView(item);};
         selectPanel.appendChild(button);
     });
