@@ -26,6 +26,12 @@
                 <input type="text" id="deadLetterExchange" placeholder="Dead Letter Exchange"/>
                 <button onclick="window.submit()">Submit</button>
                 <button onclick="window.save()">Save</button>
+                <button class="saveAsDropdownButton" onClick="window.saveAsDropdownButtonClick()">V</button>
+                <ul id="saveAsDropdownList" hidden="true">
+                    <li>
+                        <button onclick="window.save()">Save As...</button>
+                    </li>
+                </ul>
                 <br/>
                 <input type="text" id="queue" placeholder="Queue"/>
                 <br/>

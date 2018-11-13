@@ -80,10 +80,15 @@ function save() {
     {
         console.log(error);
     }
+}
 
+let open = false;
+function saveAsDropdownButtonClick() {
+    open = !open;
 
-
+    document.getElementById("saveAsDropdownList").hidden = !open;
 }
 
 window.submit = submit;
 window.save = save;
+window.saveAsDropdownButtonClick = saveAsDropdownButtonClick;
