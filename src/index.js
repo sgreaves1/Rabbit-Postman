@@ -41,7 +41,7 @@ function load() {
     });
 }
 
- function submit() {
+ function send() {
     var rabbitUrl, payload, queue, deadLetterExchange;
 
     rabbitUrl = document.getElementById("rabbituri").value;
@@ -58,7 +58,7 @@ function save() {
         ipcRenderer.on('save-reply', (event, arg1, arg2) => {
             let request = new messageRequest();
             request.name = arg1;
-            request.description;
+            request.description = arg2;
             request.url = document.getElementById("rabbituri").value;
             request.deadLetterExchange = document.getElementById("deadLetterExchange").value;
             request.queue = document.getElementById('queue').value;
@@ -89,6 +89,6 @@ function saveAsDropdownButtonClick() {
     document.getElementById("saveAsDropdownList").hidden = !open;
 }
 
-window.submit = submit;
+window.send = send;
 window.save = save;
 window.saveAsDropdownButtonClick = saveAsDropdownButtonClick;

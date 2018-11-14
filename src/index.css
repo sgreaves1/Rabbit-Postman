@@ -14,18 +14,16 @@
     display: block;
 }
 
-
-
 .mainBody {
 
 }
 
-.submitButton {
+.sendButton {
     background: dodgerblue;
     border: 0px;
 }
 
-.submitButton:hover {
+.sendButton:hover {
     background: blue;
     border: 0px;
 }
