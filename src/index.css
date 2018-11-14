@@ -19,3 +19,34 @@
 .mainBody {
 
 }
+
+.submitButton {
+    background: dodgerblue;
+    border: 0px;
+}
+
+.submitButton:hover {
+    background: blue;
+    border: 0px;
+}
+
+.saveButton {
+    background: lightgray;
+    border: 0px;
+}
+
+.saveButton:hover {
+    background: darkgray;
+    border: 0px;
+}
+
+.saveAsDropdownButton {
+    background: lightgray;
+    margin: 0px;
+    border: 0px;
+}
+
+.saveAsDropdownButton:hover {
+    background: darkgray;
+    border: 0px;
+}
