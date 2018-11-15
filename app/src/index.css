@@ -20,13 +20,22 @@
 }
 
 .sendButton {
-    background: dodgerblue;
-    border: 0px;
+    background-color: dodgerblue;
+    border: none;
+    border-radius: 3px;
+    padding: 9px 13px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    float: right;
+    margin: 0px 5px;
 }
 
 .sendButton:hover {
-    background-color: blue;
-    border: 0px;
+    background-color: lightblue;
 }
 
 .saveAsDropdownButton {
@@ -40,6 +49,8 @@
     font-size: 16px;
     cursor: pointer;
     float: right;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
 }
 
 .saveAsDropdownButton:hover {
@@ -57,6 +68,10 @@
     font-size: 16px;
     cursor: pointer;
     float: right;
+    border-right: none; /* prevent double borders */
+    -moz-border-radius-bottomleft: 3px;
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
 }
 
 .saveButton:hover {

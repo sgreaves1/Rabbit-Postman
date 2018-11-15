@@ -24,7 +24,7 @@
 
                 <input type="text" id="rabbituri" placeholder="Rabbit Url"/>
                 <input type="text" id="deadLetterExchange" placeholder="Dead Letter Exchange"/>
-                <button class="sendButton" onclick="window.send()">Send</button>
+
                 <button class="saveAsDropdownButton" onClick="window.saveAsDropdownButtonClick()">V</button>
                 <button class="saveButton" onclick="window.save()">Save</button>
                 <ul id="saveAsDropdownList" hidden="true">
@@ -32,6 +32,7 @@
                         <button onclick="window.save()">Save As...</button>
                     </li>
                 </ul>
+                <button class="sendButton" onclick="window.send()">Send</button>
                 <br/>
                 <input type="text" id="queue" placeholder="Queue"/>
                 <br/>

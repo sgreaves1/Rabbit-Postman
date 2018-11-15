@@ -2,7 +2,7 @@
   "name": "Rabbit-Postman",
   "version": "1.0.0",
   "description": "",
-  "main": "src/main.js",
+  "main": "app/src/main.js",
   "scripts": {
     "start": "electron ."
   },
