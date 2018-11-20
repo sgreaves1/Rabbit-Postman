@@ -10,7 +10,7 @@ app.on('ready', _ => {
     mainWindow = new browserWindow(
     );
 
-    mainWindow.webContents.openDevTools();
+    //mainWindow.webContents.openDevTools();
 
     mainWindow.maximize();
 
@@ -22,7 +22,7 @@ app.on('ready', _ => {
 
     saveRequestWindow = new browserWindow({show: false, width: 800, height: 600});
     saveRequestWindow.loadURL(`file://${__dirname}/saveRequest/saveRequest.html`);
-    saveRequestWindow.webContents.openDevTools();
+    //saveRequestWindow.webContents.openDevTools();
 
     ipcMain.on('show-saveRequest', function() {
         saveRequestWindow.show();
