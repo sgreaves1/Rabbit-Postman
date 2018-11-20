@@ -1,0 +1,21 @@
+{
+  "name": "Rabbit-Postman",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app/src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=app/assets/icons/mac/icon.icns --prune=true --out=release-builds"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron-packager": "^12.2.0",
+    "electron-prebuilt": "^1.4.13"
+  },
+  "dependencies": {
+    "amqp-ts": "^1.4.0",
+    "electron-store": "^2.0.0"
+  }
+}

@@ -1,0 +1,27 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    outline: none;
+    border: 0px;
+    float: top;
+}
+
+head {
+    margin: 0px;
+    padding: 0px;
+    outline: none;
+    border: 0px;
+    float: top;
+}
+
+.titleBar {
+    background-color: black;
+    height: 50px;
+    float: top;
+    margin: 0px;
+    padding: 0px;
+}
+
+p.title {
+    color: white;
+}
