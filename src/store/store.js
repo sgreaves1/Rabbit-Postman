@@ -1,5 +1,4 @@
 const Store = require('electron-store');
-const storage = new Store();
 const userData = require('./UserData');
 
 function storeUser(userData) {
@@ -7,7 +6,7 @@ function storeUser(userData) {
 }
 
 function loadUser() {
-    return storage.get('userData', new userData);
+
 }
 
 function deleteUser() {

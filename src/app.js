@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import './app.css';
+import SelectPanel from './components/SelectPanel'
+import ToolBar from './components/ToolBar'
 
 // const rabbitHelper = require('./rabbitmq');
 // const userData = require('./store/UserData');
-// const db = require('./store/store');
+
 // const messageRequest = require('./store/messageRequest');
 // const {remote} = require('electron');
 // //const {ipcRenderer} = window.require('electron');
@@ -16,7 +18,7 @@ import './app.css';
 //     db.deleteRequest(selectedItem.name);
 // }}));
 //
-// load();
+//
 //
 // function updateView(item) {
 //     document.getElementById("rabbituri").value = item.url;
@@ -25,24 +27,9 @@ import './app.css';
 //     document.getElementById('queue').value = item.queue;
 // }
 //
-// function load() {
-//     let user = db.loadUser();
-//
-//     let selectPanel = document.getElementById('selectPanel');
-//
-//     user.requests.forEach((item) => {
-//         let button = document.createElement('button');
-//         var linkText = document.createTextNode(item.name);
-//         button.appendChild(linkText);
-//         button.addEventListener('contextmenu', (e) => {
-//             e.preventDefault();
-//             selectedItem = item;
-//             menu.popup({window: remote.getCurrentWindow()});
-//         }, false);
-//         button.onclick = function() {updateView(item);};
-//         selectPanel.appendChild(button);
-//     });
-// }
+
+
+
 //
 //  function send() {
 //     var rabbitUrl, payload, queue, deadLetterExchange;
@@ -98,7 +85,23 @@ import './app.css';
 
 
 class App extends Component {
+
+    load() {
+        // this.user =  new Store().get('userData', new userData());
+
+//         button.addEventListener('contextmenu', (e) => {
+//             e.preventDefault();
+//             selectedItem = item;
+//             menu.popup({window: remote.getCurrentWindow()});
+//         }, false);
+
+//         button.onclick = function() {updateView(item);};
+    }
+
     render() {
+
+        this.load();
+
         return (
             <html>
                 <header>
@@ -106,15 +109,8 @@ class App extends Component {
                     <title>Rabbit Postman</title>
                 </header>
                 <body>
-                    <div>
-                        <div class="toolBar">
-                            <button type="button">Click Me!</button>
-                        </div>
-                    </div>
-                    <div class="selectPanel" id="selectPanel">
-
-                    </div>
-
+                    <ToolBar/>
+                    <SelectPanel/>
                     <div class="mainBody">
                     <select>
                         <option value="post">Post</option>
