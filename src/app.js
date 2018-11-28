@@ -85,10 +85,10 @@ import MainBody from './components/MainBody'
 // window.save = save;
 // window.saveAsDropdownButtonClick = saveAsDropdownButtonClick;
 
-
 class App extends Component {
 
     load() {
+        this.requests = [{name:'Sam'}, {name:"Tim"}];
         // this.user =  new Store().get('userData', new userData());
 
 //         button.addEventListener('contextmenu', (e) => {
@@ -112,7 +112,7 @@ class App extends Component {
                 </header>
                 <body>
                     <ToolBar/>
-                    <SelectPanel/>
+                    <SelectPanel requests = {this.requests}/>
                     <MainBody/>
                 </body>
             </html>
