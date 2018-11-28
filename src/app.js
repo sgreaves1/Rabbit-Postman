@@ -6,7 +6,7 @@ import MainBody from './components/MainBody'
 
 
 // const rabbitHelper = require('./rabbitmq');
-// const userData = require('./store/UserData');
+import UserData from './store/UserData';
 
 // const messageRequest = require('./store/messageRequest');
 // const {remote} = require('electron');
@@ -88,7 +88,8 @@ import MainBody from './components/MainBody'
 class App extends Component {
 
     load() {
-        this.requests = [{name:'Sam'}, {name:"Tim"}];
+        this.userData = new UserData();
+        this.userData.requests = [{name:'Sam'}, {name:"Tim"}];
         // this.user =  new Store().get('userData', new userData());
 
 //         button.addEventListener('contextmenu', (e) => {
@@ -112,7 +113,7 @@ class App extends Component {
                 </header>
                 <body>
                     <ToolBar/>
-                    <SelectPanel requests = {this.requests}/>
+                    <SelectPanel selectableItems = {this.userData.requests}/>
                     <MainBody/>
                 </body>
             </html>

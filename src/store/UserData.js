@@ -1,11 +1,9 @@
-//'use strict'
+class UserData {
 
-// const Request = require('./messageRequest');
-//
-// module.exports = class UserData {
-//
-//     constructor() {
-//         this.requests = [];
-//     }
-// }
+    constructor() {
+        this.requests = [];
+    }
+}
+
+export default UserData;
 
