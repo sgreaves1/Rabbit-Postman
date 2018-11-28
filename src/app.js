@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './app.css';
 import SelectPanel from './components/SelectPanel'
 import ToolBar from './components/ToolBar'
+import MainBody from './components/MainBody'
+
 
 // const rabbitHelper = require('./rabbitmq');
 // const userData = require('./store/UserData');
@@ -111,28 +113,7 @@ class App extends Component {
                 <body>
                     <ToolBar/>
                     <SelectPanel/>
-                    <div class="mainBody">
-                    <select>
-                        <option value="post">Post</option>
-                        <option value="get">Get</option>
-                    </select>
-
-                    <input type="text" id="rabbituri" placeholder="Rabbit Url"/>
-                    <input type="text" id="deadLetterExchange" placeholder="Dead Letter Exchange"/>
-
-                    <button class="saveAsDropdownButton" onClick="window.saveAsDropdownButtonClick()">V</button>
-                    <button class="saveButton" onclick="window.save()">Save</button>
-                    <ul id="saveAsDropdownList" hidden="true">
-                    <li>
-                    <button onclick="window.save()">Save As...</button>
-                    </li>
-                    </ul>
-                    <button class="sendButton" onclick="window.send()">Send</button>
-                    <br/>
-                    <input type="text" id="queue" placeholder="Queue"/>
-                    <br/>
-                    <textarea id="payload" placeholder="Payload"></textarea>
-                    </div>
+                    <MainBody/>
                 </body>
             </html>
         );
