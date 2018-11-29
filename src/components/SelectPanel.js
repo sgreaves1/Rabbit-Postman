@@ -1,11 +1,10 @@
 import React from "react";
 
 class SelectPanel extends React.Component {
+
+
     selectedItemOnClick(selectedItem) {
-        //     document.getElementById("rabbituri").value = item.url;
-//     document.getElementById("payload").value = item.payload;
-//     document.getElementById("deadLetterExchange").value = item.deadLetterExchange;
-//     document.getElementById('queue').value = item.queue;
+        // this.props.SelectedItem = selectedItem;
     }
 
     render()

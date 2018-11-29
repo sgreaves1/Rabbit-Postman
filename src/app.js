@@ -10,6 +10,8 @@ class App extends Component {
     load() {
         this.userData = new UserData();
         this.userData.requests = [{name:'Sam'}, {name:"Tim"}];
+
+        this.SelectedRequest = null;
     }
 
     render() {
@@ -23,8 +25,8 @@ class App extends Component {
                 </header>
                 <body>
                     <ToolBar/>
-                    <SelectPanel selectableItems = {this.userData.requests}/>
-                    <MainBody/>
+                    <SelectPanel SelectedItem={this.SelectedRequest} selectableItems={this.userData.requests} />
+                    <MainBody Request={this.SelectedRequest} />
                 </body>
             </html>
         );

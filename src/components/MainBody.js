@@ -1,15 +1,21 @@
 import React from "react";
+import MessageRequest from "../store/MessageRequest";
 
 class MainBody extends React.Component {
     render()
     {
+        if (this.props.Request !== null)
+            this.request = this.props.Request;
+        else
+            this.request = new MessageRequest("","","","","","");
+
         return <div className="mainBody">
             <select>
                 <option value="post">Post</option>
                 <option value="get">Get</option>
             </select>
 
-            <input type="text" id="rabbituri" placeholder="Rabbit Url"/>
+            <input type="text" value={this.request.rabbituri} id="rabbituri" placeholder="Rabbit Url"/>
             <input type="text" id="deadLetterExchange" placeholder="Dead Letter Exchange"/>
 
             <button className="saveAsDropdownButton" onClick="window.saveAsDropdownButtonClick()">V</button>
@@ -29,3 +35,8 @@ class MainBody extends React.Component {
 }
 
 export default MainBody;
+
+//     document.getElementById("").value = item.url;
+//     document.getElementById("payload").value = item.payload;
+//     document.getElementById("deadLetterExchange").value = item.deadLetterExchange;
+//     document.getElementById('queue').value = item.queue;
