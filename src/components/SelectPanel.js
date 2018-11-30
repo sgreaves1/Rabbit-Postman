@@ -1,16 +1,10 @@
 import React from "react";
 
 class SelectPanel extends React.Component {
-
-
-    selectedItemOnClick(selectedItem) {
-        // this.props.SelectedItem = selectedItem;
-    }
-
     render()
     {
         const buttons = this.props.selectableItems.map((item) =>
-            <button onClick={this.selectedItemOnClick(item)}>{item.name}</button>
+            <button onClick={this.props.selectedItemOnClick.bind(null, item)}>{item.name}</button>
         );
 
         return <div className="selectPanel" id="selectPanel">

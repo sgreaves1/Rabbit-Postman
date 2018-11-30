@@ -4,31 +4,35 @@ import SelectPanel from './components/SelectPanel'
 import ToolBar from './components/ToolBar'
 import MainBody from './components/MainBody'
 import UserData from './store/UserData';
+import MessageRequest from "./store/MessageRequest";
 
 class App extends Component {
+    constructor() {
+        super();
+        this.selectedItemOnClick = this.selectedItemOnClick.bind(this);
+    }
 
     load() {
         this.userData = new UserData();
+        this.selectedItem = new MessageRequest("","","","","","");
         this.userData.requests = [{name:'Sam'}, {name:"Tim"}];
+    }
 
-        this.SelectedRequest = null;
+    selectedItemOnClick(selectedItem) {
+        console.log(selectedItem);
+        this.selectedItem.name = selectedItem.name;
     }
 
     render() {
         this.load();
 
         return (
-            <html>
-                <header>
+                <div>
                     <link rel="stylesheet" href="index.css" />
-                    <title>Rabbit Postman</title>
-                </header>
-                <body>
                     <ToolBar/>
-                    <SelectPanel SelectedItem={this.SelectedRequest} selectableItems={this.userData.requests} />
-                    <MainBody Request={this.SelectedRequest} />
-                </body>
-            </html>
+                    <SelectPanel selectedItemOnClick={this.selectedItemOnClick} selectableItems={this.userData.requests} />
+                    <MainBody Request={this.selectedItem} />
+                </div>
         );
     }
 }

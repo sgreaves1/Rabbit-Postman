@@ -2,30 +2,43 @@ import React from "react";
 import MessageRequest from "../store/MessageRequest";
 
 class MainBody extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            request: new MessageRequest("","","","","","")
+        };
+        this.changeRequest = this.changeRequest.bind(this);
+    }
+
+    changeRequest() {
+        this.setState({
+            request:  new MessageRequest("safdasf","","","","","")
+        })
+    }
+
     render()
     {
-        if (this.props.Request !== null)
-            this.request = this.props.Request;
-        else
-            this.request = new MessageRequest("","","","","","");
-
         return <div className="mainBody">
             <select>
                 <option value="post">Post</option>
                 <option value="get">Get</option>
             </select>
 
-            <input type="text" value={this.request.rabbituri} id="rabbituri" placeholder="Rabbit Url"/>
+            <input type="text" defaultValue={this.state.request.name} id="rabbituri" placeholder="Rabbit Url"/>
             <input type="text" id="deadLetterExchange" placeholder="Dead Letter Exchange"/>
 
-            <button className="saveAsDropdownButton" onClick="window.saveAsDropdownButtonClick()">V</button>
-            <button className="saveButton" onClick="window.save()">Save</button>
-            <ul id="saveAsDropdownList" hidden="true">
+            <button className="saveAsDropdownButton" >V</button>
+            {/*onClick="window.saveAsDropdownButtonClick()"*/}
+            <button className="saveButton" >Save</button>
+            {/*onClick="window.save()"*/}
+            <ul id="saveAsDropdownList" hidden={true}>
                 <li>
-                    <button onClick="window.save()">Save As...</button>
+                    <button >Save As...</button>
+                    {/*onClick="window.save()"*/}
                 </li>
             </ul>
-            <button className="sendButton" onClick="window.send()">Send</button>
+            <button className="sendButton" >Send</button>
+            {/*onClick="window.send()"*/}
             <br/>
             <input type="text" id="queue" placeholder="Queue"/>
             <br/>
