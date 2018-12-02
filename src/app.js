@@ -10,17 +10,17 @@ class App extends Component {
     constructor() {
         super();
         this.selectedItemOnClick = this.selectedItemOnClick.bind(this);
+        this.selectedItem = new MessageRequest("start","","","","","");
     }
 
     load() {
         this.userData = new UserData();
-        this.selectedItem = new MessageRequest("","","","","","");
         this.userData.requests = [{name:'Sam'}, {name:"Tim"}];
     }
 
     selectedItemOnClick(selectedItem) {
-        console.log(selectedItem);
         this.selectedItem.name = selectedItem.name;
+        this.forceUpdate();
     }
 
     render() {
@@ -31,7 +31,7 @@ class App extends Component {
                     <link rel="stylesheet" href="index.css" />
                     <ToolBar/>
                     <SelectPanel selectedItemOnClick={this.selectedItemOnClick} selectableItems={this.userData.requests} />
-                    <MainBody Request={this.selectedItem} />
+                    <MainBody request={this.selectedItem}/>
                 </div>
         );
     }

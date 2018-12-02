@@ -1,19 +1,24 @@
 import React from "react";
-import MessageRequest from "../store/MessageRequest";
 
 class MainBody extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            request: new MessageRequest("","","","","","")
+            name: this.props.request.name
         };
         this.changeRequest = this.changeRequest.bind(this);
     }
 
-    changeRequest() {
+    changeRequest(e) {
         this.setState({
-            request:  new MessageRequest("safdasf","","","","","")
-        })
+            name: e.target.value
+        });
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            name: nextProps.request.name
+        });
     }
 
     render()
@@ -24,7 +29,7 @@ class MainBody extends React.Component {
                 <option value="get">Get</option>
             </select>
 
-            <input type="text" defaultValue={this.state.request.name} id="rabbituri" placeholder="Rabbit Url"/>
+            <input type="text" value={this.state.name} onChange={this.changeRequest.bind(this)} id="rabbituri" placeholder="Rabbit Url"/>
             <input type="text" id="deadLetterExchange" placeholder="Dead Letter Exchange"/>
 
             <button className="saveAsDropdownButton" >V</button>
