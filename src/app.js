@@ -1,31 +1,34 @@
 import React, { Component } from 'react';
 import './app.css';
-import SelectPanel from './components/SelectPanel'
-import ToolBar from './components/ToolBar'
-import MainBody from './components/MainBody'
-import UserData from './store/UserData';
+import SelectPanel from './components/SelectPanel';
+import ToolBar from './components/ToolBar';
+import MainBody from './components/MainBody';
+import {loadUser} from './store/store';
 import MessageRequest from "./store/MessageRequest";
+import UserData from "./store/UserData";
 
 class App extends Component {
     constructor() {
         super();
         this.selectedItemOnClick = this.selectedItemOnClick.bind(this);
-        this.selectedItem = new MessageRequest("start","","","","","");
+
+        this.load();
     }
 
     load() {
+        this.userData = loadUser();
         this.userData = new UserData();
-        this.userData.requests = [{name:'Sam'}, {name:"Tim"}];
+        this.userData.requests = [{name: "Tim"}, {name: "Sam"}];
+        this.selectedItem = new MessageRequest("","","","","","");
     }
 
     selectedItemOnClick(selectedItem) {
         this.selectedItem.name = selectedItem.name;
+        this.selectedItem.url = selectedItem.url;
         this.forceUpdate();
     }
 
     render() {
-        this.load();
-
         return (
                 <div>
                     <link rel="stylesheet" href="index.css" />

@@ -4,7 +4,9 @@ class MainBody extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: this.props.request.name
+            name: this.props.request.name,
+            url: this.props.request.url
+
         };
         this.changeRequest = this.changeRequest.bind(this);
     }
@@ -29,7 +31,7 @@ class MainBody extends React.Component {
                 <option value="get">Get</option>
             </select>
 
-            <input type="text" value={this.state.name} onChange={this.changeRequest.bind(this)} id="rabbituri" placeholder="Rabbit Url"/>
+            <input type="text" value={this.state.url} onChange={this.changeRequest.bind(this)} id="rabbituri" placeholder="Rabbit Url"/>
             <input type="text" id="deadLetterExchange" placeholder="Dead Letter Exchange"/>
 
             <button className="saveAsDropdownButton" >V</button>

@@ -15,21 +15,13 @@ class SelectPanel extends React.Component {
 
 export default SelectPanel;
 
-
 // this.user =  new Store().get('userData', new userData());
 
-
-//         button.addEventListener('contextmenu', (e) => {
-//             e.preventDefault();
-//             selectedItem = item;
-//             menu.popup({window: remote.getCurrentWindow()});
-//         }, false);
-
-
-
-
-
-
+// button.addEventListener('contextmenu', (e) => {
+//  e.preventDefault();
+//  selectedItem = item;
+//  menu.popup({window: remote.getCurrentWindow()});
+// }, false);
 
 // const rabbitHelper = require('./rabbitmq');
 // const messageRequest = require('./store/messageRequest');
@@ -44,11 +36,7 @@ export default SelectPanel;
 //     db.deleteRequest(selectedItem.name);
 // }}));
 //
-
-
-
-//
-//  function send() {
+// function send() {
 //     var rabbitUrl, payload, queue, deadLetterExchange;
 //
 //     rabbitUrl = document.getElementById("rabbituri").value;
@@ -75,14 +63,9 @@ export default SelectPanel;
 //         //     user.requests.push(request);
 //         //
 //         //     db.storeUser(user);
-//         //
-//         //     console.log('Saved');
 //         // });
 //         //
 //         // ipcRenderer.send('show-saveRequest');
-//
-//
-//
 //     } catch (error)
 //     {
 //         console.log(error);
