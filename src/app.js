@@ -18,13 +18,19 @@ class App extends Component {
     load() {
         this.userData = loadUser();
         this.userData = new UserData();
-        this.userData.requests = [{name: "Tim"}, {name: "Sam"}];
+        this.userData.requests = [
+            {name: "Tim", url: "desde", deadLetterExchange: "exchange", queue: "queue1", payload: "payload"},
+            {name: "Sam", url: "sfsdf", deadLetterExchange: "exchange22",queue: "queue2", payload: "payload2"}
+            ];
         this.selectedItem = new MessageRequest("","","","","","");
     }
 
     selectedItemOnClick(selectedItem) {
         this.selectedItem.name = selectedItem.name;
         this.selectedItem.url = selectedItem.url;
+        this.selectedItem.deadLetterExchange = selectedItem.deadLetterExchange;
+        this.selectedItem.queue = selectedItem.queue;
+        this.selectedItem.payload = selectedItem.payload;
         this.forceUpdate();
     }
 

@@ -5,8 +5,10 @@ class MainBody extends React.Component {
         super(props);
         this.state = {
             name: this.props.request.name,
-            url: this.props.request.url
-
+            url: this.props.request.url,
+            deadLetterExchange: this.props.request.deadLetterExchange,
+            queue: this.props.request.queue,
+            payload: this.props.request.payload,
         };
         this.changeRequest = this.changeRequest.bind(this);
     }
@@ -19,7 +21,11 @@ class MainBody extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         this.setState({
-            name: nextProps.request.name
+            name: nextProps.request.name,
+            url: nextProps.request.url,
+            deadLetterExchange: nextProps.request.deadLetterExchange,
+            queue: nextProps.request.queue,
+            payload: nextProps.request.payload,
         });
     }
 
@@ -32,7 +38,7 @@ class MainBody extends React.Component {
             </select>
 
             <input type="text" value={this.state.url} onChange={this.changeRequest.bind(this)} id="rabbituri" placeholder="Rabbit Url"/>
-            <input type="text" id="deadLetterExchange" placeholder="Dead Letter Exchange"/>
+            <input type="text" value={this.state.deadLetterExchange} id="deadLetterExchange" placeholder="Dead Letter Exchange"/>
 
             <button className="saveAsDropdownButton" >V</button>
             {/*onClick="window.saveAsDropdownButtonClick()"*/}
@@ -47,9 +53,9 @@ class MainBody extends React.Component {
             <button className="sendButton" >Send</button>
             {/*onClick="window.send()"*/}
             <br/>
-            <input type="text" id="queue" placeholder="Queue"/>
+            <input type="text" value={this.state.queue} id="queue" placeholder="Queue"/>
             <br/>
-            <textarea id="payload" placeholder="Payload"></textarea>
+            <textarea value={this.state.payload} id="payload" placeholder="Payload"></textarea>
         </div>
     }
 }
