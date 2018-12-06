@@ -34,7 +34,6 @@ class App extends Component {
     };
 
     saveButtonOnClick = () => {
-        console.log('here');
         storeUser(this.userData);
     };
 
