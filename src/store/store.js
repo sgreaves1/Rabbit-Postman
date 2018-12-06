@@ -1,5 +1,3 @@
-import UserData from "./UserData";
-
 export function storeUser(userData) {
     try {
         localStorage.setItem('userData', JSON.stringify(userData));
@@ -9,20 +7,7 @@ export function storeUser(userData) {
 }
 
 export function loadUser() {
-    try {
         return JSON.parse(localStorage.getItem('userData'));
-        console.log(serializedState);
-        if (serializedState === null) {
-            return new UserData();
-        }
-        let user = new UserData();
-        user.requests = serializedState.requests;
-
-        return new UserData();
-    } catch (err) {
-        console.log(err);
-        return new UserData();
-    }
 }
 
 // function deleteUser() {

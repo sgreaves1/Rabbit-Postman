@@ -5,7 +5,6 @@ import ToolBar from './components/ToolBar';
 import MainBody from './components/MainBody';
 import {loadUser, storeUser} from './store/store';
 import MessageRequest from "./store/MessageRequest";
-import UserData from "./store/UserData";
 
 class App extends Component {
     constructor(props) {
@@ -20,11 +19,6 @@ class App extends Component {
 
     load() {
         this.userData = loadUser();
-        console.log(this.userData);
-        // this.userData.requests = [
-        //     {name: "Tim", url: "desde", deadLetterExchange: "exchange", queue: "queue1", payload: "payload"},
-        //     {name: "Sam", url: "sfsdf", deadLetterExchange: "exchange22", queue: "queue2", payload: "payload2"}
-        //     ];
     }
 
     selectedItemOnClick = (selectedItem) => {
