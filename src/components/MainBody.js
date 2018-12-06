@@ -1,17 +1,13 @@
 import React from "react";
 
 class MainBody extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            name: this.props.request.name,
-            url: this.props.request.url,
-            deadLetterExchange: this.props.request.deadLetterExchange,
-            queue: this.props.request.queue,
-            payload: this.props.request.payload,
-        };
-        this.changeRequest = this.changeRequest.bind(this);
-    }
+    state = {
+        name: this.props.request.name,
+        url: this.props.request.url,
+        deadLetterExchange: this.props.request.deadLetterExchange,
+        queue: this.props.request.queue,
+        payload: this.props.request.payload,
+    };
 
     changeRequest(e) {
         this.setState({
@@ -29,6 +25,10 @@ class MainBody extends React.Component {
         });
     }
 
+    send = () => {
+        console.log('sending');
+    };
+
     render()
     {
         return <div className="mainBody">
@@ -40,9 +40,9 @@ class MainBody extends React.Component {
             <input type="text" value={this.state.url} onChange={this.changeRequest.bind(this)} id="rabbituri" placeholder="Rabbit Url"/>
             <input type="text" value={this.state.deadLetterExchange} id="deadLetterExchange" placeholder="Dead Letter Exchange"/>
 
-            <button className="saveAsDropdownButton" >V</button>
+            <button className="saveAsDropdownButton">V</button>
             {/*onClick="window.saveAsDropdownButtonClick()"*/}
-            <button className="saveButton" >Save</button>
+            <button className="saveButton" onClick={this.props.saveButtonOnClick.bind()}>Save</button>
             {/*onClick="window.save()"*/}
             <ul id="saveAsDropdownList" hidden={true}>
                 <li>
@@ -50,7 +50,7 @@ class MainBody extends React.Component {
                     {/*onClick="window.save()"*/}
                 </li>
             </ul>
-            <button className="sendButton" >Send</button>
+            <button className="sendButton" onClick={this.send}>Send</button>
             {/*onClick="window.send()"*/}
             <br/>
             <input type="text" value={this.state.queue} id="queue" placeholder="Queue"/>
@@ -61,8 +61,3 @@ class MainBody extends React.Component {
 }
 
 export default MainBody;
-
-//     document.getElementById("").value = item.url;
-//     document.getElementById("payload").value = item.payload;
-//     document.getElementById("deadLetterExchange").value = item.deadLetterExchange;
-//     document.getElementById('queue').value = item.queue;

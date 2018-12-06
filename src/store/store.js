@@ -1,7 +1,13 @@
 import UserData from "./UserData";
 
-function storeUser(userData) {
-    localStorage.setItem('userData', userData);
+export function storeUser(userData) {
+    try {
+        localStorage.setItem('userData', userData);
+        console.log('saved');
+        console.log(userData);
+    } catch (err) {
+        console.log(err);
+    }
 }
 
 export function loadUser() {
@@ -10,8 +16,12 @@ export function loadUser() {
         if (serializedState === null) {
             return new UserData();
         }
-        return serializedState;
+        console.log(serializedState.toString());
+        let user = new UserData();
+        user.requests = serializedState.requests;
+        return new UserData();
     } catch (err) {
+        console.log(err);
         return new UserData();
     }
 }
