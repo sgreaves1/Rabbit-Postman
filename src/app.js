@@ -13,23 +13,13 @@ class App extends Component {
         this.load();
     }
 
-    state = {
-        selectedRequest: new MessageRequest("","","","","","")
-    };
+    state = {selectedRequest: new MessageRequest("","","","","","")};
 
-    load() {
-        this.userData = loadUser();
-    }
+    load = () => this.userData = loadUser();
 
-    selectedItemOnClick = (selectedItem) => {
-        this.setState({
-            selectedRequest: selectedItem
-        });
-    };
+    selectedItemOnClick = (selectedItem) => this.setState({selectedRequest: selectedItem});
 
-    saveButtonOnClick = () => {
-        storeUser(this.userData);
-    };
+    saveButtonOnClick = () => storeUser(this.userData);
 
     render() {
         return (
@@ -44,3 +34,40 @@ class App extends Component {
 }
 
 export default App;
+
+// const messageRequest = require('./store/messageRequest');
+
+//
+// let selectedItem = null;
+//
+//
+
+//
+// function save() {
+//
+//     try {
+//
+//         //
+//         //     let user = db.loadUser();
+//         //     user.requests.push(request);
+//         //
+//         //     db.storeUser(user);
+//         // });
+//         //
+//         // ipcRenderer.send('show-saveRequest');
+//     } catch (error)
+//     {
+//         console.log(error);
+//     }
+// }
+//
+// let open = false;
+// function saveAsDropdownButtonClick() {
+//     open = !open;
+//
+//     document.getElementById("saveAsDropdownList").hidden = !open;
+// }
+//
+// window.send = send;
+// window.save = save;
+// window.saveAsDropdownButtonClick = saveAsDropdownButtonClick;

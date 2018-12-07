@@ -25,9 +25,8 @@ class MainBody extends React.Component {
         });
     }
 
-    send = () => {
-        console.log('sending');
-    };
+    send = () => console.log('send');
+
 
     render()
     {
